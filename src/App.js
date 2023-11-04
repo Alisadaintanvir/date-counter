@@ -1,25 +1,55 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
 
-function App() {
+export default function App() {
+  const options = {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+
+  const [step, setStep] = useState(0);
+  const [count, setCount] = useState(0);
+
+  const date = new Date();
+  date.setDate(date.getDate() + count);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div className="container">
+      <div className="component">
+        <button
+          className="btn"
+          onClick={() => setStep((currStep) => currStep - 1)}
         >
-          Learn React
-        </a>
-      </header>
+          -
+        </button>
+        <h3>Steps: {step}</h3>
+        <button
+          className="btn"
+          onClick={() => setStep((currStep) => currStep + 1)}
+        >
+          +
+        </button>
+      </div>
+
+      <div className="component">
+        <button
+          className="btn"
+          onClick={() => setCount((currCount) => currCount - 1)}
+        >
+          -
+        </button>
+        <h3>Count: {count}</h3>
+        <button
+          className="btn"
+          onClick={() => setCount((currCount) => currCount + 1)}
+        >
+          +
+        </button>
+      </div>
+
+      <h3 className="result">Today is {date.toLocaleDateString()}</h3>
     </div>
   );
 }
-
-export default App;
