@@ -9,6 +9,11 @@ export default function App() {
   date.setDate(date.getDate() + count);
   const newDate = date.toDateString();
 
+  function handleReset() {
+    setStep(1);
+    setCount(0);
+  }
+
   return (
     <div className="container">
       <div className="component">
@@ -53,7 +58,7 @@ export default function App() {
         <span>{newDate}</span>
       </h3>
 
-      <button>Reset</button>
+      <button onClick={handleReset}>Reset</button>
     </div>
   );
 }
