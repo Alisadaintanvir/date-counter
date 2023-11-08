@@ -58,7 +58,9 @@ export default function App() {
         <span>{newDate}</span>
       </h3>
 
-      <button onClick={handleReset}>Reset</button>
+      {step !== 1 || count !== 0 ? (
+        <button onClick={handleReset}>Reset</button>
+      ) : null}
     </div>
   );
 }
