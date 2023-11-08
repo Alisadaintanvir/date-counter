@@ -12,29 +12,29 @@ export default function App() {
   return (
     <div className="container">
       <div className="component">
-        <button
-          className="btn"
-          onClick={() => setStep((currStep) => currStep - 1)}
-        >
-          -
-        </button>
-        <h3>Steps: {step}</h3>
-        <button
-          className="btn"
-          onClick={() => setStep((currStep) => currStep + 1)}
-        >
-          +
-        </button>
+        <input
+          type="range"
+          min={1}
+          max={10}
+          value={step}
+          onChange={(e) => setStep(Number(e.target.value))}
+        />
+        <h3>{step}</h3>
       </div>
 
-      <div className="component">
+      <div>
         <button
           className="btn"
           onClick={() => setCount((currCount) => currCount - step)}
         >
           -
         </button>
-        <h3>Count: {count}</h3>
+        <input
+          type="text"
+          value={count}
+          placeholder="0"
+          onChange={(e) => setCount(Number(e.target.value))}
+        />
         <button
           className="btn"
           onClick={() => setCount((currCount) => currCount + step)}
@@ -52,6 +52,8 @@ export default function App() {
         </span>
         <span>{newDate}</span>
       </h3>
+
+      <button>Reset</button>
     </div>
   );
 }
